@@ -2,18 +2,16 @@
     'use strict';
 
     angular
-        .module('application.home', ['ui.router'])
+        .module('application')
         .config(HomeConfig);
 
     function HomeConfig($stateProvider) {
-        console.log('state', $stateProvider);
-        
         $stateProvider.state('home', {
             url: '/home',
             views: {
-                "main": {
-                    controller: 'HomeController',
-                    controllerAs: 'home',
+                'main': {
+                    controller: 'src.home.HomeController',
+                    controllerAs: 'homeController',
                     templateUrl: '../src/home/home.html'
                 }
             }
