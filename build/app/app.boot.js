@@ -5,7 +5,6 @@
         .module('application', [
             'templates-app',
             'templates-common',
-            'application.home',
             'ui.router',
             'pascalprecht.translate'
         ])

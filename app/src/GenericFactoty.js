@@ -3,11 +3,12 @@
 
     angular
         .module('application')
-        .controller('GenericFactory', GenericFactory);
+        .factory('src.GenericFactory', GenericFactory);
 
     function GenericFactory($http) {
 
         GenericFactory.getData = function(url, params) {
+            params = params || {};
             return $http({
                 method: 'GET',
                 url: url,

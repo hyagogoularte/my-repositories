@@ -5830,7 +5830,31 @@ button.close {
  * all the submodules and components we are using.
  *
  */
-.teste {
-  width: 20px; }
+.list-repositories {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0px;
+  margin: 0px; }
+  .list-repositories .col-md-4 {
+    padding: 0px; }
+  .list-repositories .repository {
+    height: 100%;
+    padding: 8px;
+    margin: 8px;
+    border: 1px solid #4078c0;
+    position: relative; }
+  .list-repositories .language-avatar {
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%; }
+    .list-repositories .language-avatar img {
+      width: 100px;
+      height: 100px; }
+  .list-repositories .repository-info {
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%; }
 
 /*# sourceMappingURL=angular-boilerplate-0.0.1.css.map */

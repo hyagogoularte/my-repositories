@@ -1,1 +1,42 @@
-<h1>home</h1>
+<section>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="searchUser">{{'search_for_a_github_user' | translate}}</label>
+            <div class="input-group">
+                <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Itens">
+                <span class="input-group-btn">
+	                 <button class="btn btn-primary" type="button">
+						<span class="glyphicon glyphicon-search"></span>
+                </button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div id="list" class="row">
+        <ol class="list-repositories">
+            <li class="repository">
+                <figure class="language-avatar">
+                    <img src="img_pulpit.jpg" alt="The Pulpit Rock" class="img-circle">
+                </figure>
+                <div class="repository-info">
+                    <div class="info-repository">
+                        <h4>REPOSITORIO</h4>
+                        <!-- CRIAR LINK -->
+                    </div>
+                    <div class="info-owner">
+                        <h6>OWNER</h6>
+                        <!-- CRIAR LINK -->
+                    </div>
+                    <div class="additional-info">
+                        <div class="info-forks">
+                            <span class="glyphicon glyphicon-random" aria-hidden="true"></span> Forks
+                        </div>
+                        <div class="info-stars">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Stars
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ol>
+    </div>
+</section>
