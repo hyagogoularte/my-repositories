@@ -18,4 +18,6 @@
 
         return GenericFactory;
     }
+
+    GenericFactory.$inject = ['$http'];
 })();

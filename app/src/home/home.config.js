@@ -5,7 +5,7 @@
         .module('application')
         .config(HomeConfig);
 
-    function HomeConfig($stateProvider) {        
+    function HomeConfig($stateProvider) {
         $stateProvider.state('home', {
             url: '/home',
             views: {
