@@ -1,3 +1,9 @@
+.search-block {
+    margin: 0 auto;
+    width: 400px;
+    padding: 8px;
+}
+
 .list-repositories {
     display: flex;
     list-style: none;
@@ -5,30 +11,46 @@
     justify-content: space-between;
     padding: 0px;
     margin: 0px;
-
     .col-md-4 {
         padding: 0px;
     }
     .repository {
-        height: 100%;
-        padding: 8px;
+        height: 110px;
+        padding: 4px;
         margin: 8px;
         border: 1px solid #4078c0;
         position: relative;
-
     }
     .language-avatar {
         display: inline-block;
         vertical-align: middle;
+        width: 19%;
         height: 100%;
         img {
-            width: 100px;
-            height: 100px;
+            width: 76px;
+            height: 80px;
         }
     }
     .repository-info {
         display: inline-block;
         vertical-align: middle;
+        width: 80%;
         height: 100%;
+        .info-owner {
+            h6 {
+                margin: 2px;
+            }
+        }
+        .info-description {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+    .additional-info {
+        .info-forks,
+        .info-stars {
+            display: inline-block;
+        }
     }
 }

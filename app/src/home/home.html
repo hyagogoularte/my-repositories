@@ -1,32 +1,29 @@
 <section>
     <div class="row">
-        <div class="col-md-6">
-            <label for="searchUser">{{'search_for_a_github_user' | translate}}</label>
-            {{homeController.teste}}
-            <div class="input-group">
-                <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Itens">
-                <span class="input-group-btn">
-	                 <button class="btn btn-primary" type="button">
-						<span class="glyphicon glyphicon-search"></span>
-                </button>
-                </span>
-            </div>
+        <div class="search-block form-group">
+            <label for="searchRepository">{{'search_by_repository_name' | translate}}</label>
+            <input type="text" class="form-control" id="searchRepository" placeholder="{{'type_here' | translate}}" ng-model="searchRepository.name">
         </div>
     </div>
     <div id="list" class="row list-repositories">
         <article>
-            <section class="col-md-4" ng-repeat="repository in homeController.repositories">
+            <section class="col-md-6" ng-repeat="repository in homeController.repositories | filter:searchRepository">
                 <div class="repository">
                     <figure class="language-avatar">
-                        <img src="../../assets/images/{{repository.language | validateLangitguage}}.png" alt="{{repository.language}}" class="img-circle">
+                        <img src="../../assets/images/{{repository.language | validateLanguage}}.png" alt="{{repository.language}}">
                     </figure>
                     <div class="repository-info">
                         <div class="box-info">
                             <div class="info-repository">
-                                <h4>{{repository.name}}</h4>
+                                <h4>
+                                	<a href="{{repository.html_url}}">{{repository.name}}</a>
+                                </h4>
                             </div>
                             <div class="info-owner">
                                 <h6>{{repository.owner.login}}</h6>
+                            </div>
+                            <div class="info-description">
+                                <span>{{repository.description}}</span>
                             </div>
                         </div>
                         <div class="additional-info">
