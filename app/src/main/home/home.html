@@ -10,7 +10,7 @@
             <loading></loading>
         </article>
         <article ng-if="!homeController.loading">
-            <section class="col-md-6" ng-repeat="repository in results = (homeController.repositories | filter:searchRepository)">
+            <section class="col-md-4 col-sm-6" ng-repeat="repository in results = (homeController.repositories | filter:searchRepository)">
                 <div class="repository">
                     <figure class="language-avatar">
                         <img src="../../assets/images/{{repository.language | validateLanguage}}.png" alt="{{repository.language}}">
@@ -19,22 +19,34 @@
                         <div class="box-info">
                             <div class="info-repository-name">
                                 <h4>
-                                    <a href="{{repository.html_url}}">{{repository.name}}</a>
+                                    <a href="{{repository.html_url}}" title="{{repository.name}}">
+                                        {{repository.name}}
+                                    </a>
                                 </h4>
                             </div>
                             <div class="info-owner">
-                                <h6>{{repository.owner.login}}</h6>
+                                <h6>
+                                    <a href="{{repository.owner.html_url}}" title="{{repository.owner.login}}">
+                                        {{repository.owner.login}}
+                                    </a>
+                                </h6>
                             </div>
-                            <div class="info-description">
+                            <div class="info-description" title="{{repository.description}}">
                                 <span>{{repository.description}}</span>
                             </div>
                         </div>
                         <div class="additional-info">
-                            <div class="info-forks">
-                                <span class="glyphicon glyphicon-random" aria-hidden="true"></span> {{repository.forks}} Forks
+                            <div class="info-forks" title="{{repository.forks}} {{'forks' | translate}}">
+                                <span>{{repository.forks}}</span>
+                                <figure>
+                                    <img src="../../assets/images/forks.png">
+                                </figure>
                             </div>
-                            <div class="info-stars">
-                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span> {{repository.stars}} Stars
+                            <div class="info-stars" title="{{repository.stargazers_count}} {{'stars' | translate}}" >
+                                <span>{{repository.stargazers_count}}</span>
+                                <figure ng-click="homeController.onClickSettarOnRepository(repository)">
+                                    <img src="../../assets/images/stars.png">
+                                </figure>
                             </div>
                         </div>
                     </div>

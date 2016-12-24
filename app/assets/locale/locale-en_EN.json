@@ -1,4 +1,6 @@
 {
     "search_by_repository_name": "Search by repository name",
-    "type_here": "Type here..."
+    "type_here": "Type here...",
+    "stars": "Stars",
+    "forks": "Forks"
 }

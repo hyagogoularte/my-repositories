@@ -1,4 +1,6 @@
 {
-    "search_by_repository_name": "Pesquia pelo nome do repositório",
-    "type_here": "Digite aqui..."
+    "search_by_repository_name": "Pesquise pelo nome do repositório",
+    "type_here": "Digite aqui...",
+    "stars": "Estrelas",
+    "forks": "Garfos"
 }

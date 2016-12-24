@@ -3,6 +3,11 @@
 
     angular
         .module('application')
+        .constant('ACCESS_TOKEN', {
+            github: {
+                token: '9af259102217634f64e3018d2ab3c87fd0b2ad5b'
+            }
+        })
         .controller('ApplicationController', ApplicationController);
 
     function ApplicationController($translate) {
