@@ -26,7 +26,7 @@ describe('ApplicationController', function() {
             expect($translate.use()).toEqual('pt_BR');
         });
 
-        it('should switch the translation from english to german', function() {
+        it('should switch the translation from portuguese to english', function() {
             $httpBackend.when('GET', 'assets/locale/locale-en_EN.json').respond(200);
             spyOn($translate, 'use');
 

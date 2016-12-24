@@ -4,7 +4,7 @@
     angular
         .module('application')
         .filter('validateLanguage', HomeFilter)
-        .controller('src.home.HomeController', HomeController);
+        .controller('src.main.home.HomeController', HomeController);
 
     function HomeFilter() {
         return function(input) {
@@ -17,16 +17,15 @@
     }
 
     function HomeController(GenericFactory) {
-        var home = this;
-        var loading = true;
+        var thiz = this;
         var url = 'https://api.github.com/users/hyagogoularte/repos';
 
-        home.repositories = [];
-        home.teste = 'tete11';
+        thiz.loading = true;
+        thiz.repositories = [];
 
         GenericFactory.getData(url).then(function(response) {
-            home.repositories = response.data;
-            loading = false;
+            thiz.repositories = response.data;
+            thiz.loading = false;
         });
     }
 

@@ -10,11 +10,11 @@
             url: '/home',
             views: {
                 'main': {
-                    controller: 'src.home.HomeController',
+                    controller: 'src.main.home.HomeController',
                     controllerAs: 'homeController',
-                    templateUrl: '../src/home/home.html'
-                }
-            }
+                    templateUrl: '../src/main/home/home.html'
+                }}
+
         });
     }
 })();

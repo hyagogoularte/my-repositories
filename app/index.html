@@ -13,7 +13,14 @@
 </head>
 
 <body>
-    <div class="container" ui-view="main"></div>
+    <header id="header">
+        <div class="container">
+            <figure>
+                <img src="../../assets/images/social-base.png">
+            </figure>
+        </div>
+    </header>
+    <article id="main" ui-view="main"></article>
     <!-- compiled JavaScript -->
     <% scripts.forEach( function ( file ) { %>
         <script type="text/javascript" src="<%= file %>"></script>

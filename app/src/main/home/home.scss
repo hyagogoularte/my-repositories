@@ -24,8 +24,8 @@
     .language-avatar {
         display: inline-block;
         vertical-align: middle;
-        width: 19%;
         height: 100%;
+        padding: 8px;
         img {
             width: 76px;
             height: 80px;
@@ -34,9 +34,19 @@
     .repository-info {
         display: inline-block;
         vertical-align: middle;
-        width: 80%;
+        width: calc(100% - 100px);
         height: 100%;
+        .info-repository-name {
+            h4 {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
         .info-owner {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
             h6 {
                 margin: 2px;
             }

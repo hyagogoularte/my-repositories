@@ -1,4 +1,4 @@
-<section>
+<section class="container">
     <div class="row">
         <div class="search-block form-group">
             <label for="searchRepository">{{'search_by_repository_name' | translate}}</label>
@@ -6,17 +6,20 @@
         </div>
     </div>
     <div id="list" class="row list-repositories">
-        <article>
-            <section class="col-md-6" ng-repeat="repository in homeController.repositories | filter:searchRepository">
+        <article ng-if="homeController.loading">
+            <loading></loading>
+        </article>
+        <article ng-if="!homeController.loading">
+            <section class="col-md-6" ng-repeat="repository in results = (homeController.repositories | filter:searchRepository)">
                 <div class="repository">
                     <figure class="language-avatar">
                         <img src="../../assets/images/{{repository.language | validateLanguage}}.png" alt="{{repository.language}}">
                     </figure>
                     <div class="repository-info">
                         <div class="box-info">
-                            <div class="info-repository">
+                            <div class="info-repository-name">
                                 <h4>
-                                	<a href="{{repository.html_url}}">{{repository.name}}</a>
+                                    <a href="{{repository.html_url}}">{{repository.name}}</a>
                                 </h4>
                             </div>
                             <div class="info-owner">
@@ -37,6 +40,7 @@
                     </div>
                 </div>
             </section>
+            <no-results ng-if="results.lenght == 0"></no-results>
         </article>
     </div>
 </section>

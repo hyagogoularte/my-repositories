@@ -8,7 +8,16 @@
 }
 
 html {
-    font-family: 'Open-Sans' !important;
+    font-family: $sansFontFamily !important;
+}
+
+body {
+    background-color: #e0e0e0;
+}
+
+header {
+    width: 100%;
+    height: 100%;
 }
 
 article {
@@ -16,4 +25,6 @@ article {
 	height: 100%;
 }
 
-@import '../src/home/home.scss';
+@import '../src/main/home/home.scss';
+@import '../src/utils/directives/loading/loading.scss';
+@import '../src/utils/directives/noResults/noResults.scss';
