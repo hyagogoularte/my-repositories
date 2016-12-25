@@ -1,0 +1,102 @@
+.search-block {
+    margin: 0 auto;
+    width: 400px;
+    padding: 8px;
+}
+
+.list-repositories {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0px;
+    margin: 0px;
+    .col-md-4 {
+        padding: 0px;
+    }
+    .repository {
+        height: 122px;
+        padding: 4px;
+        margin: 8px;
+        border: 1px solid #1d1a30;
+        position: relative;
+        background-color: #EEE9E9;
+        color: #1d1a30;
+    }
+    .language-avatar {
+        display: inline-block;
+        vertical-align: middle;
+        height: 100%;
+        padding: 8px;
+        img {
+            width: 76px;
+            height: 80px;
+        }
+    }
+    .repository-info {
+        display: inline-block;
+        vertical-align: middle;
+        width: calc(100% - 100px);
+        height: 100%;
+        .box-info {
+            margin-bottom: 12px;
+        }
+        .info-repository-name {
+            h4 {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                margin-bottom: 2px;
+            }
+            a {
+                color: #1d1a30;
+            }
+        }
+        .info-owner {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-style: italic;
+            margin-bottom: 4px;
+            h6 {
+                margin: 2px;
+            }
+            a {
+                color: #1d1a30;
+            }
+        }
+        .info-description {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+    .additional-info {
+        div {
+            margin-right: 8px;
+        }
+        .info-forks,
+        .info-stars {
+            display: inline-block;
+            figure {
+                display: inline-block;
+            }
+            span {
+                vertical-align: middle;
+            }
+        }
+        .info-forks {
+            img {
+                width: 15px;
+                height: 20px;
+            }
+        }
+        .info-stars {
+            cursor: pointer;
+            img {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}

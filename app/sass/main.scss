@@ -29,6 +29,6 @@ article {
 	height: 100%;
 }
 
-@import '../src/main/home/home.scss';
-@import '../src/utils/directives/loading/loading.scss';
-@import '../src/utils/directives/noResults/noResults.scss';
+@import '../components/home/home.scss';
+@import '../common/directives/loading/loading.scss';
+@import '../common/directives/noResults/noResults.scss';
