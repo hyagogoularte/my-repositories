@@ -1,16 +1,14 @@
 describe('ApplicationController', function() {
     describe('isCurrentUrl', function() {
-        var ApplicationController, $location, $scope, $translate, rootScope, httpBackend;
+        var ApplicationController, $scope, $translate, rootScope, httpBackend;
 
         beforeEach(module('pascalprecht.translate'));
         beforeEach(module('application'));
 
-        beforeEach(inject(function($controller, _$location_, $rootScope, _$translate_, _$httpBackend_) {
-            $location = _$location_;
+        beforeEach(inject(function($controller, $rootScope, _$translate_, _$httpBackend_) {
             $scope = $rootScope.$new();
             $translate = _$translate_;
             ApplicationController = $controller('ApplicationController', {
-                $location: $location,
                 $scope: $scope,
                 $translate: $translate
             });
