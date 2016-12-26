@@ -16,9 +16,5 @@
                 $templateCache.remove(current.templateUrl);
             }
         });
-        
-        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-            // react on state change events
-        });
     }
 })();

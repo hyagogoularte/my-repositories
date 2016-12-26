@@ -31,7 +31,6 @@ describe('ApplicationController', function() {
             spyOn($translate, 'use');
 
             ApplicationController.onChooseLang('en_EN');
-
             expect($translate.use).toHaveBeenCalledWith('en_EN');
         });
 
