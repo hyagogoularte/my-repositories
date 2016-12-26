@@ -5,9 +5,9 @@
     <title ng-bind="appController.pageTitle"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- compiled CSS -->
-    <% styles.forEach( function ( file ) { %>
-        <link rel="stylesheet" type="text/css" href="<%= file %>" />
-        <% }); %>
+    
+        <link rel="stylesheet" type="text/css" href="assets/styles/angular-boilerplate-0.1.1.css" />
+        
 </head>
 
 <body>
@@ -27,9 +27,9 @@
     </header>
     <article id="main" ui-view="main"></article>
     <!-- compiled JavaScript -->
-    <% scripts.forEach( function ( file ) { %>
-        <script type="text/javascript" src="<%= file %>"></script>
-        <% }); %>
+    
+        <script type="text/javascript" src="assets/scripts/angular-boilerplate-0.1.1.js"></script>
+        
 </body>
 
 </html>

@@ -10,7 +10,7 @@
             restrict: 'E',
             replace: true,
             translate: true,
-            templateUrl: '../src/utils/directives/noResults/noResults.html'
+            templateUrl: '../common/directives/noResults/noResults.html'
         };
     }
 })();

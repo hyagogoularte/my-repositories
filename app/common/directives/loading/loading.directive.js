@@ -9,7 +9,7 @@
         return {
             restrict: 'E',
             replace: true,
-            templateUrl: '../src/utils/directives/loading/loading.html'
+            templateUrl: '../common/directives/loading/loading.html'
         };
     }
 })();

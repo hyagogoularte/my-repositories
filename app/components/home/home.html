@@ -9,11 +9,11 @@
         <article ng-if="homeController.loading">
             <loading></loading>
         </article>
-        <article ng-if="!homeController.loading">
-            <section class="col-md-4 col-sm-6" ng-repeat="repository in results = (homeController.repositories | filter:searchRepository)">
+        <article ng-if="!homeController.loading && filteredRepositories.lenght != 0">
+            <section class="col-md-4 col-sm-6" ng-repeat="repository in filteredRepositories = (homeController.repositories | filter:searchRepository)">
                 <div class="repository">
                     <figure class="language-avatar">
-                        <img src="../../assets/images/{{repository.language | validateLanguage}}.png" alt="{{repository.language}}">
+                        <img src="assets/images/{{repository.language | validateLanguage}}.png" alt="{{repository.language}}">
                     </figure>
                     <div class="repository-info">
                         <div class="box-info">
@@ -39,20 +39,22 @@
                             <div class="info-forks" title="{{repository.forks}} {{'forks' | translate}}">
                                 <span>{{repository.forks}}</span>
                                 <figure>
-                                    <img src="../../assets/images/forks.png">
+                                    <img src="assets/images/forks.png">
                                 </figure>
                             </div>
-                            <div class="info-stars" title="{{repository.stargazers_count}} {{'stars' | translate}}" >
+                            <div class="info-stars" title="{{repository.stargazers_count}} {{'stars' | translate}}">
                                 <span>{{repository.stargazers_count}}</span>
                                 <figure ng-click="homeController.onClickSettarOnRepository(repository)">
-                                    <img src="../../assets/images/stars.png">
+                                    <img src="assets/images/stars.png">
                                 </figure>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <no-results ng-if="results.lenght == 0"></no-results>
+        </article>
+        <article ng-if="filteredRepositories.lenght === 0">
+            <no-results></no-results>
         </article>
     </div>
 </section>

@@ -3,10 +3,10 @@
 
     angular
         .module('application')
-        .filter('validateLanguage', HomeFilter)
-        .controller('src.main.home.HomeController', HomeController);
+        .filter('validateLanguage', ValidateLanguage)
+        .controller('components.home.HomeController', HomeController);
 
-    function HomeFilter() {
+    function ValidateLanguage() {
         return function(input) {
             if (angular.isUndefined(input) || input === null) {
                 return 'no-language';
@@ -39,5 +39,5 @@
         };
     }
 
-    HomeController.$inject = ['src.main.home.HomeService'];
+    HomeController.$inject = ['components.home.HomeService'];
 })();

@@ -38,24 +38,22 @@ module.exports = function(grunt) {
          * The directories to delete when `grunt clean` is executed.
          */
         clean: {
-            build: {
-                options: {
-                    force: true
-                },
-                src: ['<%= build_dir %>', '<%= compile_dir %>']
-            }
+            options: {
+                force: true
+            },
+            src: ['<%= temp_dir %>', '<%= production_dir %>']
         },
 
         /**
          * The `copy` task just copies files from A to B. We use it here to copy
          * our project assets (images, fonts, etc.) and javascripts into
-         * `build_dir`, and then to copy the assets to `compile_dir`.
+         * `temp_dir`, and then to copy the assets to `production_dir`.
          */
         copy: {
             build_app_assets: {
                 files: [{
                     src: ['**'],
-                    dest: '<%= build_dir %>/assets/',
+                    dest: '<%= temp_dir %>/assets/',
                     cwd: 'app/assets',
                     expand: true
                 }]
@@ -63,7 +61,7 @@ module.exports = function(grunt) {
             build_app_locale: {
                 files: [{
                     src: ['<%= app_files.locale %>'],
-                    dest: '<%= build_dir %>/assets/locale',
+                    dest: '<%= temp_dir %>/assets/locale',
                     expand: true,
                     flatten: true
                 }]
@@ -71,7 +69,7 @@ module.exports = function(grunt) {
             build_vendor_assets: {
                 files: [{
                     src: ['<%= vendor_files.assets %>'],
-                    dest: '<%= build_dir %>/assets/',
+                    dest: '<%= temp_dir %>/assets/',
                     cwd: '.',
                     expand: true,
                     flatten: true
@@ -80,7 +78,7 @@ module.exports = function(grunt) {
             build_appjs: {
                 files: [{
                     src: ['<%= app_files.js %>'],
-                    dest: '<%= build_dir %>/',
+                    dest: '<%= temp_dir %>/',
                     cwd: '.',
                     expand: true
                 }]
@@ -88,7 +86,7 @@ module.exports = function(grunt) {
             build_vendorjs: {
                 files: [{
                     src: ['<%= vendor_files.js %>'],
-                    dest: '<%= build_dir %>/',
+                    dest: '<%= temp_dir %>/',
                     cwd: '.',
                     expand: true
                 }]
@@ -96,7 +94,7 @@ module.exports = function(grunt) {
             build_vendorcss: {
                 files: [{
                     src: ['<%= vendor_files.css %>'],
-                    dest: '<%= build_dir %>/',
+                    dest: '<%= temp_dir %>/',
                     cwd: '.',
                     expand: true
                 }]
@@ -104,17 +102,17 @@ module.exports = function(grunt) {
             compile_assets: {
                 files: [{
                     src: ['**'],
-                    dest: '<%= compile_dir %>/assets',
-                    cwd: '<%= build_dir %>/assets',
+                    dest: '<%= production_dir %>/assets',
+                    cwd: '<%= temp_dir %>/assets',
                     expand: true
                 }, {
                     src: ['<%= vendor_files.css %>'],
-                    dest: '<%= compile_dir %>/',
+                    dest: '<%= production_dir %>/',
                     cwd: '.',
                     expand: true
                 }, {
                     src: ['<%= app_files.locale %>'],
-                    dest: '<%= build_dir %>/assets/locale',
+                    dest: '<%= temp_dir %>/assets/locale',
                     expand: true,
                     flatten: true
                 }]
@@ -128,8 +126,8 @@ module.exports = function(grunt) {
                 },
                 /* List of localisation files dest:source */
                 files: {
-                    '<%= compile_dir %>/assets/locale/locale-en_EN.json': '<%= build_dir %>/assets/locale/locale-en_EN.json',
-                    '<%= compile_dir %>/assets/locale/locale-de_DE.json': '<%= build_dir %>/assets/locale/locale-de_DE.json'
+                    '<%= production_dir %>/assets/locale/locale-en_EN.json': '<%= temp_dir %>/assets/locale/locale-en_EN.json',
+                    '<%= production_dir %>/assets/locale/locale-pt_BR.json': '<%= temp_dir %>/assets/locale/locale-pt_BR.json'
                 }
             }
         },
@@ -137,7 +135,7 @@ module.exports = function(grunt) {
             server: {
                 options: {
                     port: 9001,
-                    base: ['build', 'www-root'],
+                    base: ['<%= temp_dir %>', 'www-root'],
                     livereload: true
                 }
             }
@@ -154,9 +152,9 @@ module.exports = function(grunt) {
             build_css: {
                 src: [
                     '<%= vendor_files.css %>',
-                    '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
+                    '<%= temp_dir %>/assets/styles/<%= pkg.name %>-<%= pkg.version %>.css'
                 ],
-                dest: '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
+                dest: '<%= temp_dir %>/assets/styles/<%= pkg.name %>-<%= pkg.version %>.css'
             },
             /**
              * The `compile_js` target is the concatenation of our application source
@@ -165,11 +163,11 @@ module.exports = function(grunt) {
             compile_js: {
                 src: [
                     '<%= vendor_files.js %>',
-                    '<%= build_dir %>/app/**/*.js',
+                    '<%= temp_dir %>/app/**/*.js',
                     '<%= html2js.app.dest %>',
                     '<%= html2js.common.dest %>'
                 ],
-                dest: '<%= compile_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.js'
+                dest: '<%= production_dir %>/assets/scripts/<%= pkg.name %>-<%= pkg.version %>.js'
             }
         },
 
@@ -181,8 +179,8 @@ module.exports = function(grunt) {
             compile: {
                 files: [{
                     src: ['<%= app_files.js %>'],
-                    cwd: '<%= build_dir %>',
-                    dest: '<%= build_dir %>',
+                    cwd: '<%= temp_dir %>',
+                    dest: '<%= temp_dir %>',
                     expand: true
                 }]
             }
@@ -207,15 +205,12 @@ module.exports = function(grunt) {
         sass: {
             build: {
                 files: {
-                    '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.sass %>'
+                    '<%= temp_dir %>/assets/styles/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.sass %>'
                 }
             },
             compile: {
                 files: {
-                    '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.sass %>'
-                },
-                options: {
-
+                    '<%= temp_dir %>/assets/styles/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.sass %>'
                 }
             }
         },
@@ -265,18 +260,15 @@ module.exports = function(grunt) {
                     base: 'app/app'
                 },
                 src: ['<%= app_files.atpl %>'],
-                dest: '<%= build_dir %>/templates-app.js'
+                dest: '<%= temp_dir %>/templates-app.js'
             },
 
-            /**
-             * These are the templates from `app/common`.
-             */
             common: {
                 options: {
-                    base: 'app/common'
+                    base: 'app/app'
                 },
                 src: ['<%= app_files.ctpl %>'],
-                dest: '<%= build_dir %>/templates-common.js'
+                dest: '<%= temp_dir %>/templates-common.js'
             }
         },
 
@@ -285,7 +277,7 @@ module.exports = function(grunt) {
          */
         karma: {
             options: {
-                configFile: '<%= build_dir %>/karma-unit.js'
+                configFile: '<%= temp_dir %>/karma-unit.js'
             },
             unit: {
                 port: 9019,
@@ -309,14 +301,14 @@ module.exports = function(grunt) {
              * `src` property contains the list of included files.
              */
             build: {
-                dir: '<%= build_dir %>',
+                dir: '<%= temp_dir %>',
                 src: [
                     '<%= vendor_files.js %>',
-                    '<%= build_dir %>/app/**/*.js',
+                    '<%= temp_dir %>/app/**/*.js',
                     '<%= html2js.common.dest %>',
                     '<%= html2js.app.dest %>',
                     '<%= vendor_files.css %>',
-                    '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
+                    '<%= temp_dir %>/assets/**/*.css'
                 ]
             },
 
@@ -326,11 +318,11 @@ module.exports = function(grunt) {
              * file. Now we're back!
              */
             compile: {
-                dir: '<%= compile_dir %>',
+                dir: '<%= production_dir %>',
                 src: [
                     '<%= concat.compile_js.dest %>',
                     '<%= vendor_files.css %>',
-                    '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
+                    '<%= temp_dir %>/assets/styles/<%= pkg.name %>-<%= pkg.version %>.css'
                 ]
             }
         },
@@ -341,7 +333,7 @@ module.exports = function(grunt) {
          */
         karmaconfig: {
             unit: {
-                dir: '<%= build_dir %>',
+                dir: '<%= temp_dir %>',
                 src: [
                     '<%= vendor_files.js %>',
                     '<%= html2js.app.dest %>',
@@ -481,7 +473,7 @@ module.exports = function(grunt) {
      * The `build` task gets your app ready to run for development and testing.
      */
     grunt.registerTask('build', [
-        'clean:build',
+        'clean',
         'html2js',
         'jshint',
         'sass:build',
@@ -492,7 +484,8 @@ module.exports = function(grunt) {
         'copy:build_appjs',
         'copy:build_vendorjs',
         'copy:build_vendorcss',
-        'index:build', 'karmaconfig',
+        'index:build',
+        'karmaconfig',
         'karma:continuous'
     ]);
 
@@ -511,7 +504,7 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask('serve', [
-        'connect:server', 
+        'connect:server',
         'watch'
     ]);
 
@@ -540,7 +533,7 @@ module.exports = function(grunt) {
      * compilation.
      */
     grunt.registerMultiTask('index', 'Process index.html template', function() {
-        var dirRE = new RegExp('^(' + grunt.config('build_dir') + '|' + grunt.config('compile_dir') + ')\/', 'g');
+        var dirRE = new RegExp('^(' + grunt.config('temp_dir') + '|' + grunt.config('production_dir') + ')\/', 'g');
         var jsFiles = filterForJS(this.filesSrc).map(function(file) {
             return file.replace(dirRE, '');
         });
@@ -569,7 +562,7 @@ module.exports = function(grunt) {
     grunt.registerMultiTask('karmaconfig', 'Process karma config templates', function() {
         var jsFiles = filterForJS(this.filesSrc);
 
-        grunt.file.copy('karma/karma-unit.tpl.js', grunt.config('build_dir') + '/karma-unit.js', {
+        grunt.file.copy('karma/karma-unit.tpl.js', grunt.config('temp_dir') + '/karma-unit.js', {
             process: function(contents, path) {
                 return grunt.template.process(contents, {
                     data: {

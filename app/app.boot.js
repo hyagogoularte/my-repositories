@@ -11,8 +11,10 @@
         .run(run);
 
     function run($rootScope, $state) {
-        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-            // react on state change events
+        $rootScope.$on('$routeChangeStart', function(event, next, current) {
+            if (typeof(current) !== 'undefined') {
+                $templateCache.remove(current.templateUrl);
+            }
         });
     }
 })();

@@ -3,9 +3,9 @@
 
     angular
         .module('application')
-        .factory('src.main.home.HomeService', HomeService);
+        .factory('components.home.HomeService', HomeService);
 
-    function HomeService(GenericFactory, ACCESS_TOKEN) {
+    function HomeService(GenericFactory) {
 
         HomeService.getRepositories = function(user) {
             var url = 'https://api.github.com/users/:user/repos';
@@ -13,13 +13,9 @@
         };
 
         HomeService.putStarOnRepository = function(owner, repositoryName) {
+            // esse token é temporario, somente para teste.
             var url = 'https://api.github.com/user/starred/:owner/:repo?access_token=:token';
-            return GenericFactory.putData(url.replace(':owner', owner).replace(':repo', repositoryName).replace(':token', ACCESS_TOKEN.github.token));
-        };
-
-        HomeService.removeStarOnRepository = function(owner, repositoryName) {
-            var url = 'https://api.github.com/user/starred/:owner/:repo?access_token=:token';
-            return GenericFactory.deleteData(url.replace(':owner', owner).replace(':repo', repositoryName).replace(':token', ACCESS_TOKEN.github.token));
+            return GenericFactory.putData(url.replace(':owner', owner).replace(':repo', repositoryName).replace(':token', '7$39$67$70$b7$22$53$58$3c$d6$83$4b$a9$ae$8e$d2$43$00$bd$41$8').replace(/[$]+/g,''));
         };
 
         HomeService.getRepository = function(owner, repositoryName) {
@@ -28,12 +24,11 @@
         };
 
         HomeService.getStargazers = function(owner, repositoryName) {
-            //https://api.github.com/repos/hyagogoularte/my-repositories/stargazers
             var url = 'https://api.github.com/repos/:owner/:repo/stargazers';
             return GenericFactory.getData(url.replace(':owner', owner).replace(':repo', repositoryName));
         };
         return HomeService;
     }
 
-    HomeService.$inject = ['src.GenericFactory', 'ACCESS_TOKEN'];
+    HomeService.$inject = ['shared.factory.GenericFactory'];
 })();

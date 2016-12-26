@@ -10,9 +10,9 @@
             url: '/home',
             views: {
                 'main': {
-                    controller: 'src.main.home.HomeController',
+                    controller: 'components.home.HomeController',
                     controllerAs: 'homeController',
-                    templateUrl: '../src/main/home/home.html'
+                    templateUrl: '../components/home/home.html'
                 }}
 
         });

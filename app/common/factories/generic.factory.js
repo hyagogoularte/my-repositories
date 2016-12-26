@@ -3,7 +3,7 @@
 
     angular
         .module('application')
-        .factory('src.GenericFactory', GenericFactory);
+        .factory('shared.factory.GenericFactory', GenericFactory);
 
     function GenericFactory($http) {
         function request(method, url, params) {

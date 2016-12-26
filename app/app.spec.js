@@ -30,8 +30,7 @@ describe('ApplicationController', function() {
             $httpBackend.when('GET', 'assets/locale/locale-en_EN.json').respond(200);
             spyOn($translate, 'use');
 
-            ApplicationController.toggleLang();
-
+            ApplicationController.onChooseLang('en_EN');
             expect($translate.use).toHaveBeenCalledWith('en_EN');
         });
 
