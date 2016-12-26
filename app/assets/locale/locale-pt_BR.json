@@ -2,5 +2,8 @@
     "search_by_repository_name": "Pesquise pelo nome do repositório",
     "type_here": "Digite aqui...",
     "stars": "Estrelas",
-    "forks": "Garfos"
+    "forks": "Garfos",
+    "change_language": "Trocar de Linguagem",
+    "portuguese": "Português",
+    "english": "Inglês"
 }

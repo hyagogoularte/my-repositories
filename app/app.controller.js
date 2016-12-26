@@ -15,12 +15,8 @@
 
         app.pageTitle = 'SocialBase - Test';
 
-        app.toggleLang = function() {
-            if ($translate.use() === 'en_EN') {
-                $translate.use('pt_BR');
-            } else {
-                $translate.use('en_EN');
-            }
+        app.onChooseLang = function(value) {
+            $translate.use(value);
         };
     }
 

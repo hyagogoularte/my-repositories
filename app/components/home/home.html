@@ -9,8 +9,8 @@
         <article ng-if="homeController.loading">
             <loading></loading>
         </article>
-        <article ng-if="!homeController.loading">
-            <section class="col-md-4 col-sm-6" ng-repeat="repository in results = (homeController.repositories | filter:searchRepository)">
+        <article ng-if="!homeController.loading && filteredRepositories.lenght != 0">
+            <section class="col-md-4 col-sm-6" ng-repeat="repository in filteredRepositories = (homeController.repositories | filter:searchRepository)">
                 <div class="repository">
                     <figure class="language-avatar">
                         <img src="assets/images/{{repository.language | validateLanguage}}.png" alt="{{repository.language}}">
@@ -52,7 +52,9 @@
                     </div>
                 </div>
             </section>
-            <no-results ng-if="results.lenght == 0"></no-results>
+        </article>
+        <article ng-if="filteredRepositories.lenght === 0">
+            <no-results></no-results>
         </article>
     </div>
 </section>
