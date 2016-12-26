@@ -3,10 +3,10 @@
 
     angular
         .module('application')
-        .filter('validateLanguage', HomeFilter)
+        .filter('validateLanguage', ValidateLanguage)
         .controller('components.home.HomeController', HomeController);
 
-    function HomeFilter() {
+    function ValidateLanguage() {
         return function(input) {
             if (angular.isUndefined(input) || input === null) {
                 return 'no-language';
