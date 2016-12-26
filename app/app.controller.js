@@ -6,11 +6,11 @@
         .controller('ApplicationController', ApplicationController);
 
     function ApplicationController($translate) {
-        var app = this;
+        var thiz = this;
 
-        app.pageTitle = 'SocialBase - Test';
+        thiz.pageTitle = 'SocialBase - Test';
 
-        app.onChooseLang = function(value) {
+        thiz.onChooseLang = function(value) {
             $translate.use(value);
         };
     }
