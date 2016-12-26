@@ -66,11 +66,11 @@ module.exports = {
      */
     vendor_files: {
         js: [
+            'node_modules/jquery/dist/jquery.min.js',
+            'node_modules/boostrap-sass/assets/javascripts/bootstrap.min.js',
             'node_modules/angular/angular.js',
             'node_modules/angular-ui-router/release/angular-ui-router.js',
             'node_modules/underscore/underscore-min.js',
-            'node_modules/jquery/dist/jquery.min.js',
-            'node_modules/boostrap/dist/js/bootstrap.min.js',
             'node_modules/angular-translate/dist/angular-translate.min.js',
             'node_modules/angular-translate/dist/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js'
         ],
