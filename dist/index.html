@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="application" ng-controller="ApplicationController as appController">
+
+<head>
+    <title ng-bind="appController.pageTitle"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- compiled CSS -->
+    
+        <link rel="stylesheet" type="text/css" href="assets/styles/angular-boilerplate-0.1.1.css" />
+        
+</head>
+
+<body>
+    <header id="header">
+        <div class="container">
+            <figure>
+                <img src="assets/images/social-base.png">
+            </figure>
+            <div class="box-language">
+                <select class="form-control" ng-model="languageSelected" ng-change="appController.onChooseLang(languageSelected)">
+                    <option value="">{{'change_language' | translate}}</option>
+                    <option value="pt_BR">{{'portuguese' | translate}}</option>
+                    <option value="en_EN">{{'english' | translate}}</option>
+                </select>
+            </div>
+        </div>
+    </header>
+    <article id="main" ui-view="main"></article>
+    <!-- compiled JavaScript -->
+    
+        <script type="text/javascript" src="assets/scripts/angular-boilerplate-0.1.1.js"></script>
+        
+</body>
+
+</html>
