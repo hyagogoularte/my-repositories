@@ -27,7 +27,7 @@
             thiz.loading = false;
         });
 
-        thiz.onClickSettarOnRepository = function(repository) {
+        thiz.onClickSetStarOnRepository = function(repository) {
             var owner = repository.owner.login;
             var repositoryName = repository.name;
 

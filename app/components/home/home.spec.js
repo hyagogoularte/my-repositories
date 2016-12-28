@@ -1,35 +1,46 @@
-// describe( 'home section', function() {
+describe('HomeController', function() {
+    var HomeController, HomeServiceMock, $scope, $httpBackend;
 
-//   var controller, rootScope, httpBackend;
+    beforeEach(module('application'));
 
-//   beforeEach(module('pascalprecht.translate'));
-//   beforeEach(module('application'));
+    beforeEach(module(function() {
+        HomeServiceMock = {
+            getRepositories: function(user) {},
+            putStarOnRepository: function(repository) {}
+        };
+    }));
 
+    beforeEach(inject(function($controller, $rootScope, _$httpBackend_) {
+        $scope = $rootScope.$new();
+        $httpBackend = _$httpBackend_;
 
-//   beforeEach( module( function( $translateProvider ) {
-//     $translateProvider.registerAvailableLanguageKeys(['pt_BR', 'en_EN']);
-//   }));
+        HomeController = $controller('components.home.HomeController', {
+            $scope: $scope,
+            HomeService: HomeServiceMock
+        });
 
-//   beforeEach(inject( function($injector){
-//       controller = $injector.get('$controller');
-//       rootScope = $injector.get('$rootScope');
-//       httpBackend = $injector.get('$httpBackend');
-//   }));
+    }));
 
-//   it( 'should have a predefined language after start', inject(function($translate) {
-//     expect($translate.use()).toEqual('pt_BR');
-//   }));
+    it('should pass a dummy test', function() {
+        expect(HomeController).toBeTruthy();
+    });
 
-//   it( 'should switch the translation from english to german', inject(function($translate) {
-//     httpBackend.when('GET', 'assets/locale/locale-en_EN.json').respond(200);
-//     spyOn($translate, 'use');
-  
-//     var applicationController = controller('ApplicationController', {});
-  
-//     applicationController.toggleLang();
-  
-//     expect($translate.use).toHaveBeenCalledWith('en_EN');
-//   }));
+    it('should have HomeController defined', function() {
+        expect(HomeController).toBeDefined();
+    });
 
+    it('should have the appropriate default values', function() {
+        expect(HomeController.repositories).toEqual([]);
+    });
 
-// });
+    it('should loading be true when is started controller', function() {
+        expect(HomeController.loading).toBe(true);
+    });
+
+    it('should call getRepositories method', function() {
+        spyOn(HomeServiceMock, 'getRepositories').andCallThrough();
+        HomeServiceMock.getRepositories('hyagogoularte');
+
+        expect(HomeServiceMock.getRepositories).toHaveBeenCalled();
+    });
+});
